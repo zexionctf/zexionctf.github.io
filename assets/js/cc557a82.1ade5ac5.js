@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkzexionctf_github_io=self.webpackChunkzexionctf_github_io||[]).push([[9672],{3407:e=>{e.exports=JSON.parse('{"permalink":"/blog/tags/pwn","page":1,"postsPerPage":10,"totalPages":1,"totalCount":2,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

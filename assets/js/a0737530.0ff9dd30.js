@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkzexionctf_github_io=self.webpackChunkzexionctf_github_io||[]).push([[4086],{4075:t=>{t.exports=JSON.parse('{"label":"format string","permalink":"/blog/tags/format-string","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);
