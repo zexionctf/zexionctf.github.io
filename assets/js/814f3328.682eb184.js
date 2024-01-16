@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkteamserver_xyz=self.webpackChunkteamserver_xyz||[]).push([[2535],{5641:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"PivotMan - HackTheBox","permalink":"/blog/Pivotman","unlisted":false},{"title":"SpellBook - HackTheBox","permalink":"/blog/SpellBook","unlisted":false}]}')}}]);

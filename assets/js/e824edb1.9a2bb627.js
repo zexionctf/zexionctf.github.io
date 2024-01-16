@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkteamserver_xyz=self.webpackChunkteamserver_xyz||[]).push([[5300],{8578:e=>{e.exports=JSON.parse('{"label":"one_gadget","permalink":"/blog/tags/one-gadget","allTagsPath":"/blog/tags","count":2,"unlisted":false}')}}]);

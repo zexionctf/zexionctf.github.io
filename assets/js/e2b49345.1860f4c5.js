@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkteamserver_xyz=self.webpackChunkteamserver_xyz||[]).push([[6059],{8623:e=>{e.exports=JSON.parse('{"label":"pwn","permalink":"/blog/tags/pwn","allTagsPath":"/blog/tags","count":2,"unlisted":false}')}}]);
