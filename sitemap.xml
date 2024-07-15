@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://teamserver.xyz/</loc>
+    <lastmod>2024-07-15T02:16:34-04:00</lastmod>
+  </url><url>
+    <loc>https://teamserver.xyz/blog/</loc>
+    <lastmod>2024-07-15T02:16:34-04:00</lastmod>
+  </url><url>
+    <loc>https://teamserver.xyz/blog/manage-engine-rce/</loc>
+    <lastmod>2024-07-15T02:16:34-04:00</lastmod>
+  </url><url>
+    <loc>https://teamserver.xyz/archives/</loc>
+  </url><url>
+    <loc>https://teamserver.xyz/series/</loc>
+  </url><url>
+    <loc>https://teamserver.xyz/tags/</loc>
+  </url>
+</urlset>

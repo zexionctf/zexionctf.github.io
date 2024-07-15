@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>blog @ teamserver.xyz</title>
+    <link>https://teamserver.xyz/</link>
+    <description>Recent content on blog @ teamserver.xyz</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 15 Jul 2024 02:16:34 -0400</lastBuildDate><atom:link href="https://teamserver.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ManageEngine ServiceDesk Plus 9.3</title>
+      <link>https://teamserver.xyz/blog/manage-engine-rce/</link>
+      <pubDate>Mon, 15 Jul 2024 02:16:34 -0400</pubDate>
+      
+      <guid>https://teamserver.xyz/blog/manage-engine-rce/</guid>
+      <description>&lt;p&gt;Chaining &lt;a href=&#34;https://www.exploit-db.com/exploits/46674&#34;&gt;username enumeration&lt;/a&gt; to login as &lt;strong&gt;administrator&lt;/strong&gt; or any administrative role user for reverse shell from scheduled task.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Not a new technique, but found it quite interesting.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;cve-2019-10273&#34;&gt;CVE-2019-10273&lt;/h2&gt;
+&lt;p&gt;CVE-2019-10273 is a information leakage vulnerability within the ManageEngine ServiceDesk Plus 9.3 software, this vulnerability allows for the enumeration of active users that are registered on the ServiceDesk 9.3 hosted software.&lt;/p&gt;
+&lt;h3 id=&#34;attack-narrative&#34;&gt;Attack Narrative&lt;/h3&gt;
+&lt;p&gt;&lt;img alt=&#34;revshell&#34; src=&#34;https://teamserver.xyz/img/manage-engine/revshell.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;We first exploit a username enumeration vulnerability to identify valid admin usernames. We then use brute force to crack the password and log in as an administrator. With admin access, we schedule a task to execute a reverse shell, gaining full control of the system.&lt;/p&gt;
+&lt;h3 id=&#34;procedure&#34;&gt;Procedure&lt;/h3&gt;
+&lt;h4 id=&#34;1-getting-administrator-in-the-portal&#34;&gt;1. Getting administrator in the portal.&lt;/h4&gt;
+&lt;p&gt;Upon visiting the ManageEngine ServiceDesk Plus webview, we find ourself in a login panel.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;manage-engine webview&#34; src=&#34;https://teamserver.xyz/img/manage-engine/web-gui.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Now just follow the CVE to get yourself a admin role user login session, in this case the username is &lt;strong&gt;administrator&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;guest login&#34; src=&#34;https://teamserver.xyz/img/manage-engine/guest.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Initially you&amp;rsquo;d need to login as guest, the credential should be &lt;strong&gt;guest:guest&lt;/strong&gt;. Now in some cases, this might be disabled, so just weep about it then.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;guest loggedin&#34; src=&#34;https://teamserver.xyz/img/manage-engine/guest-loggedin.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Go to &lt;strong&gt;http://192.168.220.13:8080/mc&lt;/strong&gt;, you should be automatically logged in as guest user from previous login. (Obviously different IP Address.)&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;mc&#34; src=&#34;https://teamserver.xyz/img/manage-engine/mc.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Logout from the &lt;strong&gt;/mc&lt;/strong&gt;, and now you can start your bruteforce for usernames. The password doesn&amp;rsquo;t have to valid at all. Not going to showcase the bruteforce, configured the server myself, so I know its &lt;strong&gt;administrator&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;admin login&#34; src=&#34;https://teamserver.xyz/img/manage-engine/adminlogin.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Any invalid password works here.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;admin&#34; src=&#34;https://teamserver.xyz/img/manage-engine/admin.png&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;2-reverse-shell-from-scheduled-tasks&#34;&gt;2. Reverse shell from scheduled tasks.&lt;/h4&gt;
+&lt;p&gt;Observe the Custom Schedules under &lt;em&gt;&lt;strong&gt;Admin -&amp;gt; General Settings -&amp;gt; Custom Schedules&lt;/strong&gt;&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;portal&#34; src=&#34;https://teamserver.xyz/img/manage-engine/portal.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Something like this should be observed where you should be able to create a new custom schedules.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;tasks&#34; src=&#34;https://teamserver.xyz/img/manage-engine/tasks.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Create a new schedule task, and add a minute later from now for sure causes.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;revshell task&#34; src=&#34;https://teamserver.xyz/img/manage-engine/shell.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;After few minutes, a reverse shell connection should be there.&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;revshell&#34; src=&#34;https://teamserver.xyz/img/manage-engine/rce.png&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;refrence&#34;&gt;Refrence&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.exploit-db.com/exploits/46674&#34;&gt;ManageEngine ServiceDesk Plus 9.3 - User Enumeration &lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
